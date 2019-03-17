@@ -56,7 +56,6 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Enemy\Enemy.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyBoss.cs" />
-    <Compile Include="Assets\Script\Enemy\IEnemy.cs" />
     <Compile Include="Assets\Script\Entity.cs" />
     <Compile Include="Assets\Script\Player\PlayerController.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">

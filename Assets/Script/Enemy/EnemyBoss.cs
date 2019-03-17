@@ -1,7 +1,17 @@
-﻿public class EnemyBoss : Enemy {
+﻿public class EnemyBoss : Entity {
+    private void Awake() {
+        AttackPower = 30;
+    }
 
-    public override int AttackPower {
-        get { return 2 * attackPower;}
-        set {}
+    public override void Attack(Entity otherEntity) {
+        otherEntity.Damage(AttackPower);
+    }
+
+    public override void Damage(int damage) {
+        if (Health - damage < 0) {
+            health = 0;
+        } else {
+            health -= damage;
+        }
     }
 }

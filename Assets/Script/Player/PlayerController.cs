@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : Entity {
     private float speed = 0.05f;
     public int health = 100;
 
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision other) {
-        Enemy enemy = other.gameObject.GetComponent<Enemy>();
+        Entity enemy = other.gameObject.GetComponent<Entity>();
 
         if (enemy != null && other.gameObject.CompareTag("enemy")) {
             Debug.Log(enemy.AttackPower);
@@ -46,10 +46,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void Damage(int value) {
-        if (value < 0) return;
+    public override void Attack(Entity otherEntity) {
+        otherEntity.Damage(AttackPower);
+    }
 
-        health -= value;
+    public override void Damage(int damage) {
+        if (damage < 0) return;
+
+        health -= damage;
         if (health <= 0) {
             Destroy(this.gameObject);
         }
