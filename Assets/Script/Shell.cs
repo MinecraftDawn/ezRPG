@@ -1,25 +1,37 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Shell {
+public class Shell : MonoBehaviour {
     private int power;
-    private float speed;
+    private float speed = 1;
 
-    private GameObject original = Resources.Load<GameObject>(
-        "Prefab" + "\\" + "shell");
-
-    private Vector3 position;
-    private Quaternion rotation;
-
-    public Shell(Vector3 position, Quaternion rotation) {
-        this.position = position;
-        this.rotation = new Quaternion(rotation.x, rotation.y, rotation.z, rotation.w);
+    public int Power {
+        get { return power; }
+        set {
+            if (value < 0) {
+                power = 0;
+            } else {
+                power = value;
+            }}
     }
 
-    public void createShell() {
-        GameObject shell = MonoBehaviour.Instantiate(original, position, rotation);
-        Rigidbody shellRigidbody = shell.GetComponent<Rigidbody>();
-        shellRigidbody.AddForce(shell.transform.right * 1000f + shell.transform.up * 20f);
-
+    public float Speed {
+        get { return speed; }
     }
 
+    public void Update() {
+        if (gameObject.transform.position.y < 0) {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        Destroy(this.gameObject);
+
+        Entity entity = other.gameObject.GetComponent<Entity>();
+        if (entity != null) {
+            entity.Damage(Power);
+        }
+    }
 }

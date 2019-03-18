@@ -17,11 +17,4 @@ public class EnemyBoss : Entity {
         otherEntity.Damage(AttackPower);
     }
 
-    public override void Damage(int damage) {
-        if (Health - damage < 0) {
-            health = 0;
-        } else {
-            health -= damage;
-        }
-    }
 }

@@ -15,5 +15,13 @@ public abstract class Entity : MonoBehaviour {
 
     public abstract void Attack(Entity otherEntity);
 
-    public abstract void Damage(int damage);
+    public virtual void Damage(int damage) {
+        if (damage < 0) return;
+        if (Health - damage < 0) {
+            health = 0;
+            Destroy(this.gameObject);
+        } else {
+            health -= damage;
+        }
+    }
 }
