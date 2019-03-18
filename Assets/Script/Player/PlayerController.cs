@@ -2,11 +2,11 @@
 
 public class PlayerController : Entity {
     private float speed = 0.05f;
-    public int health = 100;
 
     public void Update() {
         moving();
         rotating();
+        shoot();
     }
 
     private void moving() {
@@ -46,13 +46,21 @@ public class PlayerController : Entity {
         }
     }
 
+    private void shoot() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Shell shell = new Shell(gameObject.transform.GetChild(0).position,
+                transform.rotation);
+            shell.createShell();
+        }
+    }
+
+
     public override void Attack(Entity otherEntity) {
         otherEntity.Damage(AttackPower);
     }
 
     public override void Damage(int damage) {
         if (damage < 0) return;
-
         health -= damage;
         if (health <= 0) {
             Destroy(this.gameObject);
