@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿public class Enemy : EnemyBase {
 
-public class Enemy : Entity {
+    private void Update() {
+        move();
+    }
 
     public override void Attack(Entity otherEntity) {
         otherEntity.Damage(AttackPower);
     }
-
 }

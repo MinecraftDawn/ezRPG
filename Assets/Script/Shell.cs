@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shell : MonoBehaviour {
     private int power;
@@ -13,7 +11,8 @@ public class Shell : MonoBehaviour {
                 power = 0;
             } else {
                 power = value;
-            }}
+            }
+        }
     }
 
     public float Speed {
