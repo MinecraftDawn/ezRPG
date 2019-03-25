@@ -60,6 +60,7 @@
     <Compile Include="Assets\Script\Entity.cs" />
     <Compile Include="Assets\Script\Player\PlayerController.cs" />
     <Compile Include="Assets\Script\Shell.cs" />
+    <None Include="Assets\FreeVoxelGirl\ReadMe.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Unity/ezRPG/ezRPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
